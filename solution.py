@@ -1,8 +1,9 @@
 def busiest_window(deliveries: list[int], k: int) -> int:
-    """Return the largest total number of deliveries over any k consecutive days.
-
-    deliveries is a list of daily delivery counts in date order, and k is the
-    window length. Bounds: 1 <= k <= len(deliveries) <= 10^5 and
-    0 <= deliveries[i] <= 10^4.
-    """
-    raise NotImplementedError
+    s = sum(deliveries[:k])
+    ans = s 
+    for i in range(k,len(deliveries)):
+        s += deliveries[i] - deliveries[i-k]
+        if s > ans :
+            ans = s 
+    return ans 
+    
